@@ -1,14 +1,22 @@
 # Presentation Deliverables
 
-Add the three actual presentation files here after they are finalized.
+The slide-content drafts for all three phases are in this folder. The generated PowerPoint files are available as downloadable artifacts in the ChatGPT conversation, but the binary `.pptx` files have **not yet been committed to this GitHub repository**.
 
-1. **Phase 1 — Problem Definition and Conceptual Design**  
-   Problem statement, objectives, scope, requirements, proposed workflow, and approved ER diagram.
+## Required presentation files
 
-2. **Phase 2 — Logical Database Design**  
-   Relational schema, primary and foreign keys, constraints, functional dependencies, normalization through 3NF, data dictionary, and SQL implementation.
+1. `PHASE_1_Problem_Analysis.pptx` — problem statement, objectives, scope, requirements, workflow, and ERD.
+2. `PHASE_2_Database_Design.pptx` — relational schema, PK/FK relationships, constraints, normalization, and SQL implementation.
+3. `PHASE_3_Implementation_and_Demo.pptx` — architecture, actual application screenshots, CRUD, scheduling, results, reports, test evidence, limitations, conclusion, and demo flow.
 
-3. **Phase 3 — Application Implementation and Results**  
-   Application architecture, database connectivity, CRUD features, validation, reports, screenshots, test cases, conclusion, and future enhancements.
+## Existing slide content
 
-Use meaningful filenames, for example `Phase_1_Design.pptx`, `Phase_2_Database_Design.pptx`, and `Phase_3_Implementation.pptx`. Do not replace real presentations with empty files or claim evidence that has not been produced.
+- `PHASE_1_CONTENT.md`
+- `PHASE_2_CONTENT.md`
+- `PHASE_3_CONTENT.md`
+
+## Before submission
+
+- Commit the actual `.pptx` files to this folder.
+- Replace any screenshot placeholders with genuine captures from the running prototype.
+- Verify the ERD and relational schema against `schema.sql` and the running database.
+- Do not state a test passed unless it has actually been run; link or include the evidence.
