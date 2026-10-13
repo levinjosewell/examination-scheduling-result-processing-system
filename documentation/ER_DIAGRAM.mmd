@@ -1,0 +1,56 @@
+erDiagram
+    STUDENTS {
+        int student_id PK
+        string roll_number UK
+        string full_name
+        string email UK
+        string program
+        string section
+        int semester
+    }
+    FACULTY {
+        int faculty_id PK
+        string faculty_code UK
+        string full_name
+        string email UK
+        string department
+    }
+    SUBJECTS {
+        int subject_id PK
+        string subject_code UK
+        string subject_name
+        string department
+        int semester
+        int credits
+    }
+    ROOMS {
+        int room_id PK
+        string room_code UK
+        string building
+        int capacity
+    }
+    EXAMS {
+        int exam_id PK
+        int subject_id FK
+        date exam_date
+        string start_time
+        string end_time
+        int room_id FK
+        int invigilator_id FK
+        string section
+        float max_marks
+        string status
+    }
+    RESULTS {
+        int result_id PK
+        int student_id FK
+        int exam_id FK
+        float marks_obtained
+        string grade
+        boolean published
+    }
+    SUBJECTS ||--o{ EXAMS : "scheduled for"
+    ROOMS ||--o{ EXAMS : "hosts"
+    FACULTY ||--o{ EXAMS : "invigilates"
+    STUDENTS ||--o{ RESULTS : "receives"
+    EXAMS ||--o{ RESULTS : "produces"
