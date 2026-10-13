@@ -159,7 +159,13 @@ elif page == "Subjects":
         a,b,c=st.columns(3); code=a.text_input("Subject code *"); name=b.text_input("Subject name *"); sem=c.number_input("Semester",1,12,3); credits=a.number_input("Credits",1,10,3)
         if st.form_submit_button("Add subject",type="primary"):
             if not code.strip() or not name.strip(): st.error("Subject code and name are required.")
-            else: safe_run("INSERT INTO subjects(subject_code,subject_name,semester,credits) VALUES(?,?,?,?)",(code.strip(),name.strip(),sem,credits))
+            else:
+                # The large mock-data generator includes a required department column.
+                columns = {row[1] for row in conn().execute("PRAGMA table_info(subjects)").fetchall()}
+                if "department" in columns:
+                    safe_run("INSERT INTO subjects(subject_code,subject_name,department,semester,credits) VALUES(?,?,?,?,?)",(code.strip(),name.strip(),"Computer Science",sem,credits))
+                else:
+                    safe_run("INSERT INTO subjects(subject_code,subject_name,semester,credits) VALUES(?,?,?,?)",(code.strip(),name.strip(),sem,credits))
     st.dataframe(df("SELECT subject_id ID,subject_code Code,subject_name Subject,semester Semester,credits Credits FROM subjects"),use_container_width=True,hide_index=True)
 
 elif page == "Rooms":
