@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<defs><style>
+.title{font:700 34px Arial;fill:#f8fafc}.subtitle{font:18px Arial;fill:#cbd5e1}.entity{fill:#132b49;stroke:#4da3ff;stroke-width:2.5;rx:12}.head{fill:#1d4d78}.name{font:700 21px Arial;fill:#fff}.field{font:16px 'Courier New',monospace;fill:#e2e8f0}.rel{stroke:#fbbf24;stroke-width:3;fill:none}.label{font:15px Arial;fill:#fde68a;paint-order:stroke;stroke:#0b1220;stroke-width:5px;stroke-linejoin:round}
+</style></defs>
+<rect width="1600" height="1100" fill="#0b1220"/>
+<text x="60" y="58" class="title">ExamFlow — Entity Relationship Diagram</text><text x="60" y="91" class="subtitle">Examination Scheduling &amp; Result Processing System | PK = Primary Key, FK = Foreign Key, UK = Unique Key</text>
+<!-- relationship connectors behind entities -->
+<path class="rel" d="M500 295 H585 V365 H665"/><text x="518" y="280" class="label">1 : many</text>
+<path class="rel" d="M500 520 H585 V445 H665"/><text x="518" y="505" class="label">1 : many</text>
+<path class="rel" d="M500 745 H585 V510 H665"/><text x="518" y="730" class="label">1 : many</text>
+<path class="rel" d="M1080 450 H1140 V290 H1190"/><text x="1090" y="433" class="label">1 : many</text>
+<path class="rel" d="M1080 520 H1140 V745 H1190"/><text x="1090" y="545" class="label">1 : many</text>
+<path class="rel" d="M1350 450 V610"/><text x="1365" y="550" class="label">1 : many</text>
+<!-- students -->
+<rect class="entity" x="70" y="180" width="430" height="235"/><path class="head" d="M82 180 H488 Q500 180 500 192 V226 H70 V192 Q70 180 82 180Z"/><text x="92" y="210" class="name">STUDENTS</text>
+<text x="92" y="258" class="field">PK  student_id : INTEGER</text><text x="92" y="286" class="field">UK  roll_number : VARCHAR</text><text x="92" y="314" class="field">UK  email : VARCHAR</text><text x="92" y="342" class="field">    full_name : VARCHAR</text><text x="92" y="370" class="field">    program, section : VARCHAR</text><text x="92" y="398" class="field">    semester : INTEGER</text>
+<!-- faculty -->
+<rect class="entity" x="70" y="440" width="430" height="190"/><path class="head" d="M82 440 H488 Q500 440 500 452 V486 H70 V452 Q70 440 82 440Z"/><text x="92" y="470" class="name">FACULTY</text>
+<text x="92" y="518" class="field">PK  faculty_id : INTEGER</text><text x="92" y="546" class="field">UK  faculty_code, email</text><text x="92" y="574" class="field">    full_name : VARCHAR</text><text x="92" y="602" class="field">    department : VARCHAR</text>
+<!-- rooms -->
+<rect class="entity" x="70" y="660" width="430" height="180"/><path class="head" d="M82 660 H488 Q500 660 500 672 V706 H70 V672 Q70 660 82 660Z"/><text x="92" y="690" class="name">ROOMS</text>
+<text x="92" y="738" class="field">PK  room_id : INTEGER</text><text x="92" y="766" class="field">UK  room_code : VARCHAR</text><text x="92" y="794" class="field">    building : VARCHAR</text><text x="92" y="822" class="field">    capacity : INTEGER</text>
+<!-- exams -->
+<rect class="entity" x="665" y="300" width="415" height="350"/><path class="head" d="M677 300 H1068 Q1080 300 1080 312 V346 H665 V312 Q665 300 677 300Z"/><text x="687" y="330" class="name">EXAMS</text>
+<text x="687" y="378" class="field">PK  exam_id : INTEGER</text><text x="687" y="406" class="field">FK  subject_id : INTEGER</text><text x="687" y="434" class="field">FK  room_id : INTEGER</text><text x="687" y="462" class="field">FK  invigilator_id : INTEGER</text><text x="687" y="490" class="field">    exam_date : DATE</text><text x="687" y="518" class="field">    start_time, end_time : TIME</text><text x="687" y="546" class="field">    section : VARCHAR</text><text x="687" y="574" class="field">    max_marks : DECIMAL</text><text x="687" y="602" class="field">    status : VARCHAR</text>
+<!-- subjects -->
+<rect class="entity" x="1190" y="160" width="340" height="290"/><path class="head" d="M1202 160 H1518 Q1530 160 1530 172 V206 H1190 V172 Q1190 160 1202 160Z"/><text x="1212" y="190" class="name">SUBJECTS</text>
+<text x="1212" y="238" class="field">PK  subject_id</text><text x="1212" y="266" class="field">UK  subject_code</text><text x="1212" y="294" class="field">    subject_name</text><text x="1212" y="322" class="field">    department</text><text x="1212" y="350" class="field">    semester</text><text x="1212" y="378" class="field">    credits</text>
+<!-- results -->
+<rect class="entity" x="1190" y="610" width="340" height="250"/><path class="head" d="M1202 610 H1518 Q1530 610 1530 622 V656 H1190 V622 Q1190 610 1202 610Z"/><text x="1212" y="640" class="name">RESULTS</text>
+<text x="1212" y="688" class="field">PK  result_id</text><text x="1212" y="716" class="field">FK  student_id</text><text x="1212" y="744" class="field">FK  exam_id</text><text x="1212" y="772" class="field">    marks_obtained</text><text x="1212" y="800" class="field">    grade</text><text x="1212" y="828" class="field">    published</text>
+<text x="60" y="1030" class="subtitle">Core rules: one subject/room/faculty member can be referenced by many exams; each result belongs to one student and one exam.</text>
+</svg>
